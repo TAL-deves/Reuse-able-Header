@@ -15,9 +15,9 @@ import Navbar3 from './Component/Navbar3';
 const theme=createTheme({
   palette:{
     secondary:{
-      main:'#336699',
-      dark:'#023047',
-      light:'#264653',
+      main:'#457b9d',
+      // dark:'#023047',
+      // light:'#264653',
       // main:colors.orange[500],
     },
     primary:{
