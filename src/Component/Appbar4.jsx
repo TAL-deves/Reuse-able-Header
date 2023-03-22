@@ -11,27 +11,16 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { makeStyles } from '@mui/material';
 
-// const useStyles=makeStyles((theme))=>({
-//   root:{
-//     appbarColorSolid:{
-//       backgroundColor:"#03045e"
-//     },
-//     appbarColorTransparent:{
-//       backgroundColor:'#023e8a'
-//     }
-//   }
-// })
+
 
 // const pages = ['Menuds 1', 'Menusd 2', 'Menusd 3'];
 // const settings = ['SignInsd', 'Logoutsds'];
 
 const Appbar = (props) => {
-const [appbarColor, setAppbarColor]=React.useState(false);
-const nevRef=React.useRef();
-nevRef.current=appbarColor;
-const { pages, settings, LOGO} = props
+
+    const { pages, settings, LOGO} = props;
+    // console.log('logo', typeof(props.LOGO), props);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElNavUser, setAnchorElNavUser] = React.useState(null);
@@ -42,33 +31,25 @@ const { pages, settings, LOGO} = props
   const handleOpenNavMenuUser = (event) => {
     setAnchorElNavUser(event.currentTarget);
   };
-  const handleCloseNavMenu = () => {
+
+  const handleClicked=()=>{
+    console.log('appbar button clicked');
+  }
+
+
+
+  const handleCloseNavMenu = (page) => {
+    console.log(page);
     setAnchorElNav(null);
+    handleClicked();
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElNavUser(null);
   };
 
-//   React.useEffect(()=>{
-// const handleScroll=()=>{
-//   const show=window.scrollY>200
-//   if(show){
-//     setAppbarColor('primary.main')
-//   }else{
-//     setAppbarColor('transparent')
-//   }
-// }
-// document.addEventListener('scroll', handleScroll)
-// return()=>{
-//   document.removeEventListener('scroll', handleScroll)
-// }
-//   },[])
-
   return (
-    <AppBar position="sticky"
-    sx={{bgcolor:'transparent'}}
-      >
+    <AppBar position="sticky" sx={{bgcolor:'secondary.dark', marginTop:4}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -82,12 +63,22 @@ const { pages, settings, LOGO} = props
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+            //   color: 'inherit',
               textDecoration: 'none',
+              color:'secondary.light'
             }}
-          >{
-            LOGO || 'No logo here'
+          >
+            {
+           LOGO || 'No Logo'
           }
+
+          {/* {
+           if(LOGO=="image")
+            <img src={LOGO} alt="logo" width="200rem" />
+           else if(LOGO=="text")
+           <h1>{LOGO}</h1>
+           else{''}
+          } */}
             
           
           </Typography>
@@ -119,12 +110,13 @@ const { pages, settings, LOGO} = props
               onClose={handleCloseNavMenu}
               sx={{
                 "&:hover": {
-                    color: "primary.light",
+                    color: "secondary",
+                    // bgcolor:'secondary.light'
                     },
                 display: { xs: 'block', md: 'none'}
               }}
             >{pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}
+                <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}
                 
                 >
                    <Link style={{ textDecoration: "none", color: 'inherit' }}
@@ -148,9 +140,10 @@ const { pages, settings, LOGO} = props
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+            //   color: 'inherit',
               textDecoration: 'none',
-              marginRight:8
+              marginRight:8,
+              color:'secondary.light'
             }}
           >{
             LOGO || 'No logo here'
@@ -161,9 +154,11 @@ const { pages, settings, LOGO} = props
              <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 4, padding:2, color: 'black',"&:hover": {
-                color: "primary.light",
-                },
+                sx={{ my: 4, padding:2, color:'secondary.light', "&:hover": {
+                    color: "primary.light",
+                    // backgroundColor: "primary.light"
+                    // bgcolor:'secondary.light'
+                  },
                 display: 'block' }}
                 to={page.link || '/'}
                >
@@ -174,14 +169,15 @@ const { pages, settings, LOGO} = props
                ))}
       </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, ml:{sm:'8%' ,md:'12%', lg:'16%'}}}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 1}}>
             {/* <Button variant="outlined"> */}
     {settings.map((setting) => (
-                <MenuItem key={setting} sx={{borderRadius:8}}>
+                <MenuItem key={setting}>
                      <Button variant="outlined"
-                     sx={{borderRadius:5, "&:hover": {
-                        color: "black",
-                        backgroundColor: "primary.light"
+                     sx={{borderRadius:5,color:'secondary.light', "&:hover": {
+                        color: "primary.light",
+                        // backgroundColor: "primary.light"
+                        // bgcolor:'secondary.light'
                       } }}
                     to={setting.link || ''}>
                   <Typography textAlign="center">{setting}</Typography>

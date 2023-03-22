@@ -43,7 +43,10 @@ const Appbar2 = (props) => {
   };
 
   return (
-    <AppBar position="sticky" sx={{bgcolor:'primary.dark', marginTop:4}}>
+    <AppBar position="sticky" 
+    sx={{bgcolor:'primary.dark', marginTop:4}}
+    // color="transparent" elevation={0}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -136,7 +139,7 @@ const Appbar2 = (props) => {
              <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 4,px:5, color: 'white',"&:hover": {
+                sx={{ my: 4,px:5, color: 'black',"&:hover": {
                 color: "black",
                 },
                 display: 'block' }}
