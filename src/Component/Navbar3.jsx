@@ -17,9 +17,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // const pages = ['Menuds 1', 'Menusd 2', 'Menusd 3'];
 // const settings = ['SignInsd', 'Logoutsds'];
 
-const Appbar = (props) => {
+const Navbar3 = (props) => {
 
-    const { pages, settings, LOGO} = props;
+  const { menus, buttons, logo} = props;
     // console.log('logo', typeof(props.LOGO), props);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -64,7 +64,7 @@ const Appbar = (props) => {
             }}
           >
             {
-           LOGO || 'No Logo'
+           logo || 'No Logo'
           }
 
           {/* {
@@ -110,14 +110,14 @@ const Appbar = (props) => {
                     },
                 display: { xs: 'block', md: 'none'}
               }}
-            >{pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}
+            >{menus.map((menu) => (
+                <MenuItem key={menu} onClick={handleCloseNavMenu}
                 
                 >
                    <Link style={{ textDecoration: "none", color: 'inherit' }}
-                to={page.link || '/'}
+                to={menu.link || '/'}
                    >
-                  <Typography textAlign="center" sx={{alignItems: 'center',}}>{page}</Typography>
+                  <Typography textAlign="center" sx={{alignItems: 'center',}}>{menu || ''}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -141,13 +141,13 @@ const Appbar = (props) => {
               color:'secondary.light'
             }}
           >{
-            LOGO || 'No logo here'
+            logo || 'No logo here'
           }
           </Typography>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, marginLeft:'auto' }}>
-           {pages.map((page) => (
+           {menus.map((menu) => (
              <Button
-                key={page}
+                key={menu}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 4, padding:2, color:'secondary.light', "&:hover": {
                     color: "primary.light",
@@ -155,10 +155,10 @@ const Appbar = (props) => {
                     // bgcolor:'secondary.light'
                   },
                 display: 'block' }}
-                to={page.link || '/'}
+                to={menu.link || '/'}
                >
                 <Link style={{ textDecoration: "none", color: 'inherit'}}>
-                 <Typography textAlign="center">{page}</Typography>
+                 <Typography textAlign="center">{menu || ''}</Typography>
                  </Link>
                </Button>             
                ))}
@@ -166,7 +166,7 @@ const Appbar = (props) => {
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 1}}>
             {/* <Button variant="outlined"> */}
-    {settings.map((setting) => (
+    {buttons.map((buttonnav) => (
                 // <MenuItem key={setting}>
                      <Button variant="outlined"
                      sx={{borderRadius:5,color:'secondary.light', "&:hover": {
@@ -174,8 +174,8 @@ const Appbar = (props) => {
                         // backgroundColor: "primary.light"
                         // bgcolor:'secondary.light'
                       }, margin:2 }}
-                    to={setting.link || ''}>
-                  <Typography textAlign="center">{setting}</Typography>
+                    to={buttonnav.link || ''}>
+                  <Typography textAlign="center">{buttonnav || ''}</Typography>
                   </Button>
                 // </MenuItem>
               ))}
@@ -210,14 +210,14 @@ const Appbar = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             > 
-            {settings.map((setting) => (
-                <MenuItem key={setting}
+            {buttons.map((buttonnav) => (
+                <MenuItem key={buttonnav}
                  onClick={handleCloseUserMenu}
                  >
                      <Button variant="outlined"
-                     to={setting.link || ''}
+                     to={buttonnav.link || ''}
                      >
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center">{buttonnav || ''}</Typography>
                   </Button>
                 </MenuItem>
               ))}
@@ -229,4 +229,4 @@ const Appbar = (props) => {
   );
 };
 
-export default Appbar;
+export default Navbar3;

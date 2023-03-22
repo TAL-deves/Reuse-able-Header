@@ -1,6 +1,6 @@
 // import './App.css';
-import Appbar from './Component/Appbar';
-import { createTheme,colors , ThemeProvider } from '@mui/material';
+import Navbar from './Component/Navbar';
+import { createTheme, colors , ThemeProvider } from '@mui/material';
 
 import { Routes, Route
  } from 'react-router-dom';
@@ -8,8 +8,8 @@ import { Routes, Route
 
 import Contact from "./pages/Contact.jsx"
 import About from "./pages/About.jsx"
-import Appbar2 from './Component/Appbar2';
-import Appbar3 from './Component/Appbar3';
+import Navbar2 from './Component/Navbar2';
+import Navbar3 from './Component/Navbar3';
 
 
 const theme=createTheme({
@@ -43,9 +43,9 @@ function App() {
   return (
     <div sx={{bgColor:'black'}} >
        <ThemeProvider theme={theme}>
-        <Appbar pages={pages} settings={settings} LOGO={logo}/>
-        <Appbar3 pages={pages3} settings={settings3} LOGO={logo3}/>
-        <Appbar2 pages={pages2} settings={settings2} LOGO={logo2}/>
+        <Navbar menus={pages} buttons={settings} logo={logo}/>
+        <Navbar3 menus={pages3} buttons={settings3} logo={logo3}/>
+        <Navbar2 menus={pages2} buttons={settings2} logo={logo2}/>
         {/* <Appbar4 pages={pages2} settings={settings2} LOGO={logo2}/> */}
     <Routes>
       {/* <Route path='/' element={<Home />}/> */}

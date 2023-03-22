@@ -11,15 +11,24 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { makeStyles } from '@mui/material';
 
-
+// const useStyles=makeStyles((theme))=>({
+//   root:{
+//     appbarColorSolid:{
+//       backgroundColor:"#03045e"
+//     },
+//     appbarColorTransparent:{
+//       backgroundColor:'#023e8a'
+//     }
+//   }
+// })
 
 // const pages = ['Menuds 1', 'Menusd 2', 'Menusd 3'];
 // const settings = ['SignInsd', 'Logoutsds'];
 
-const Appbar2 = (props) => {
-
-    const { pages, settings, LOGO} = props
+const Navbar = (props) => {
+const { menus, buttons, logo} = props
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElNavUser, setAnchorElNavUser] = React.useState(null);
@@ -30,10 +39,6 @@ const Appbar2 = (props) => {
   const handleOpenNavMenuUser = (event) => {
     setAnchorElNavUser(event.currentTarget);
   };
-
-
-
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -42,11 +47,25 @@ const Appbar2 = (props) => {
     setAnchorElNavUser(null);
   };
 
+//   React.useEffect(()=>{
+// const handleScroll=()=>{
+//   const show=window.scrollY>200
+//   if(show){
+//     setAppbarColor('primary.main')
+//   }else{
+//     setAppbarColor('transparent')
+//   }
+// }
+// document.addEventListener('scroll', handleScroll)
+// return()=>{
+//   document.removeEventListener('scroll', handleScroll)
+// }
+//   },[])
+
   return (
-    <AppBar position="sticky" 
-    sx={{bgcolor:'primary.dark', marginTop:4}}
-    // color="transparent" elevation={0}
-    >
+    <AppBar position="sticky"
+    sx={{bgcolor:'transparent'}}
+      >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -64,7 +83,7 @@ const Appbar2 = (props) => {
               textDecoration: 'none',
             }}
           >{
-            LOGO || 'No logo here'
+            logo || 'logo not found'
           }
             
           
@@ -76,7 +95,7 @@ const Appbar2 = (props) => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-            //   sx={{marginRight: "auto"}}
+            //   sx={{marginLeft: "auto"}}
               color="inherit"
             >
               <MenuIcon />
@@ -97,18 +116,15 @@ const Appbar2 = (props) => {
               onClose={handleCloseNavMenu}
               sx={{
                 "&:hover": {
-                    color: "secondary",
+                    color: "primary.light",
                     },
                 display: { xs: 'block', md: 'none'}
               }}
-            >{pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}
-                
-                >
+            >{menus.map((menu) => (
+                <MenuItem key={menu} onClick={handleCloseNavMenu}>
                    <Link style={{ textDecoration: "none", color: 'inherit' }}
-                to={page.link || '/'}
-                   >
-                  <Typography textAlign="center" sx={{alignItems: 'center',}}>{page}</Typography>
+                to={menu.link || '/'}>
+                  <Typography textAlign="center" sx={{alignItems: 'center',}}>{menu || ''}</Typography>
                   </Link>
                 </MenuItem>
               ))}
@@ -131,44 +147,43 @@ const Appbar2 = (props) => {
               marginRight:8
             }}
           >{
-            LOGO || 'No logo here'
+            logo || 'logo not found'
           }
           </Typography>
-          <Box sx={{ flexGrow:1, display: { xs: 'none', md: 'flex' } , ml:5}}>
-           {pages.map((page) => (
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, marginLeft:'auto' }}>
+           {menus.map((menu) => (
              <Button
-                key={page}
+                key={menu}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 4,px:2, color: 'black',"&:hover": {
-                color: "black",
+                sx={{ my: 4, padding:2, color: 'black',"&:hover": {
+                color: "primary.light",
                 },
                 display: 'block' }}
-                to={page.link || '/'}
+                to={menu.link || '/'}
                >
                 <Link style={{ textDecoration: "none", color: 'inherit'}}>
-                 <Typography textAlign="center">{page}</Typography>
+                 <Typography textAlign="center">{menu || ''}</Typography>
                  </Link>
                </Button>             
                ))}
       </Box>
-          {/* <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 1}}>
-    {settings.map((setting) => (
-                <MenuItem key={setting}>
+
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, ml:{sm:'8%' ,md:'12%', lg:'16%', xl:'20%'}}}>
+    {buttons.map((button) => (
+                <MenuItem key={button} sx={{borderRadius:8}}>
                      <Button variant="outlined"
-                     sx={{borderRadius:5,"&:hover": {
+                     sx={{borderRadius:5, "&:hover": {
                         color: "black",
                         backgroundColor: "primary.light"
-                      } }}
-                    to={setting.link || ''}>
-                  <Typography textAlign="center">{setting}</Typography>
+                      }}}
+                    to={button.link || ''}>
+                  <Typography textAlign="center">{button || ''}</Typography>
                   </Button>
                 </MenuItem>
               ))}
-
-          </Box> */}
-
-
-           <Box>
+            {/* </Button> */}
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, ml: 1}}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -192,24 +207,28 @@ const Appbar2 = (props) => {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNavUser)}
-              onClose={handleCloseUserMenu}> 
-            {settings.map((setting) => (
-                <MenuItem key={setting}
+              onClose={handleCloseUserMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            > 
+            {buttons.map((button) => (
+                <MenuItem key={button}
                  onClick={handleCloseUserMenu}
                  >
                      <Button variant="outlined"
-                     to={setting.link || ''}
+                     to={button.link || ''}
                      >
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center">{button || ''}</Typography>
                   </Button>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> 
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 
-export default Appbar2;
+export default Navbar;

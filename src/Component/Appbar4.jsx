@@ -17,7 +17,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // const pages = ['Menuds 1', 'Menusd 2', 'Menusd 3'];
 // const settings = ['SignInsd', 'Logoutsds'];
 
-const Appbar = (props) => {
+const Navbar4 = (props) => {
 
     const { pages, settings, LOGO} = props;
     // console.log('logo', typeof(props.LOGO), props);
@@ -234,4 +234,4 @@ const Appbar = (props) => {
   );
 };
 
-export default Appbar;
+export default Navbar4;
