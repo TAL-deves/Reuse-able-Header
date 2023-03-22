@@ -134,12 +134,12 @@ const Appbar2 = (props) => {
             LOGO || 'No logo here'
           }
           </Typography>
-          <Box sx={{ flexGrow:1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow:1, display: { xs: 'none', md: 'flex' } , ml:5}}>
            {pages.map((page) => (
              <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 4,px:5, color: 'black',"&:hover": {
+                sx={{ my: 4,px:2, color: 'black',"&:hover": {
                 color: "black",
                 },
                 display: 'block' }}

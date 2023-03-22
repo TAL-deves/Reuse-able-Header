@@ -174,15 +174,14 @@ const { pages, settings, LOGO} = props
                ))}
       </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, ml:{sm:'8%' ,md:'12%', lg:'16%'}}}>
-            {/* <Button variant="outlined"> */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, ml:{sm:'8%' ,md:'12%', lg:'16%', xl:'20%'}}}>
     {settings.map((setting) => (
                 <MenuItem key={setting} sx={{borderRadius:8}}>
                      <Button variant="outlined"
                      sx={{borderRadius:5, "&:hover": {
                         color: "black",
                         backgroundColor: "primary.light"
-                      } }}
+                      }}}
                     to={setting.link || ''}>
                   <Typography textAlign="center">{setting}</Typography>
                   </Button>

@@ -167,17 +167,17 @@ const Appbar = (props) => {
           <Box sx={{ display: { xs: 'none', md: 'flex' }, ml: 1}}>
             {/* <Button variant="outlined"> */}
     {settings.map((setting) => (
-                <MenuItem key={setting}>
+                // <MenuItem key={setting}>
                      <Button variant="outlined"
                      sx={{borderRadius:5,color:'secondary.light', "&:hover": {
                         color: "primary.light",
                         // backgroundColor: "primary.light"
                         // bgcolor:'secondary.light'
-                      } }}
+                      }, margin:2 }}
                     to={setting.link || ''}>
                   <Typography textAlign="center">{setting}</Typography>
                   </Button>
-                </MenuItem>
+                // </MenuItem>
               ))}
             {/* </Button> */}
           </Box>
