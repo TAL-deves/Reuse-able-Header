@@ -128,7 +128,7 @@ const { menus, buttons, logo} = props;
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-              marginRight:8
+              // marginRight:8
             }}
           >{
             logo || 'No logo here'

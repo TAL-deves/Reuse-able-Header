@@ -4,14 +4,15 @@ import Sample from '../Component/Sample';
 
 const About = () => {
     const menus = [{"name":"one", "submenu":["one","two","three"]},{"name":"two"}];
-    const menu = ['home', 'about', 'contact'];
+    const menu = ['home','About', 'our team'];
     const buttons = ['sign up', 'sign in'];
+    const logo=['LOGO']
 
 
     return (
         <div>
             <Sample text={"About page is this"}/>
-            <Navbar menus={menu} buttons={buttons}/>
+            <Navbar menus={menu} buttons={buttons} logo={logo}/>
         </div>
     );
 };

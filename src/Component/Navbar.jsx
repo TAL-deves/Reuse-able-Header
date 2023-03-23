@@ -47,27 +47,13 @@ const { menus, buttons, logo} = props
     setAnchorElNavUser(null);
   };
 
-//   React.useEffect(()=>{
-// const handleScroll=()=>{
-//   const show=window.scrollY>200
-//   if(show){
-//     setAppbarColor('primary.main')
-//   }else{
-//     setAppbarColor('transparent')
-//   }
-// }
-// document.addEventListener('scroll', handleScroll)
-// return()=>{
-//   document.removeEventListener('scroll', handleScroll)
-// }
-//   },[])
-
   return (
     <AppBar position="sticky"
     sx={{bgcolor:'transparent'}}
       >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+           {/* for large screen  */}
           <Typography
             variant="h6"
             noWrap
@@ -88,6 +74,7 @@ const { menus, buttons, logo} = props
             
           
           </Typography>
+ {/* for small screen  */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'}}}>
             <IconButton
               size="large"
@@ -130,7 +117,7 @@ const { menus, buttons, logo} = props
               ))}
             </Menu>
           </Box>
-
+ {/* for small screen  */}
           <Typography
             variant="h5"
             noWrap
@@ -144,12 +131,13 @@ const { menus, buttons, logo} = props
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-              marginRight:8
+              // marginRight:8
             }}
           >{
             logo || 'logo not found'
           }
           </Typography>
+           {/* for large screen  */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, marginLeft:'auto' }}>
            {menus.map((menu) => (
              <Button
